@@ -1,14 +1,11 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-"""
+'''
 Collection of preprocessing tools for nlpnet.
-"""
-
-import argparse
+'''
 
 from nlpnet.pos.pos_reader import POSReader
 from nlpnet.srl.srl_reader import SRLReader
+import argparse
+
 
 def parse_args():
     '''
@@ -16,7 +13,7 @@ def parse_args():
     '''
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(title='Tools')
-    
+
     gen_dict_help = 'Generate and save (as pickle) '\
                     'a word dictionary for the given corpus'
     gen_dict = subparsers.add_parser('generate-dict',
@@ -28,13 +25,14 @@ def parse_args():
                           'POS corpora should have lines in the format '
                           'token_tag token_tag ...'
                           'SRL corpora should be in CoNLL format.')
-    gen_dict.add_argument('minimum_occurrences',
-                          help='Minimum number of occurrences of a word in the corpus '
-                          'to be included in the dictionary', type=int)
+    gen_dict.add_argument(
+        'minimum_occurrences',
+        help='Minimum number of occurrences of a word in the corpus '
+             'to be included in the dictionary', type=int
+    )
     gen_dict.add_argument('output', help='File to save the dictionary')
     gen_dict.set_defaults(func=generate_dict)
-    
-    
+
     gen_tag_dict_help = 'Generate and save (as pickle) a tag '\
                         'dictionary from the given corpus'
     gen_tag_dict = subparsers.add_parser('generate-tag-dict',
@@ -43,7 +41,7 @@ def parse_args():
     gen_tag_dict.add_argument('corpus', help='Corpus file')
     gen_tag_dict.add_argument('output', help='File to save the dictionary')
     gen_tag_dict.set_defaults(func=generate_tag_dict)
-    
+
     args = parser.parse_args()
     return args
 
@@ -58,7 +56,7 @@ def get_reader_for_task(task):
         reader_class = SRLReader
     else:
         raise ValueError('Unknown task: %s' % args.task)
-    
+
     return reader_class
 
 
@@ -82,13 +80,6 @@ def generate_dict(args):
 
 
 if __name__ == '__main__':
-
     args = parse_args()
-    
     # call the default function to handle the tool
     args.func(args)
-    
-
-
-
-

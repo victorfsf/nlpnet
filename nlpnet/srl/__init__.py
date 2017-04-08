@@ -1,3 +1,2 @@
-
-from .train_srl import *
-from .srl_reader import SRLReader
+from .train_srl import *  # noqa
+from .srl_reader import SRLReader  # noqa
