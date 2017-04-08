@@ -792,7 +792,7 @@ Output size: %d
         """
         Loads weights, feature tables and transition tables previously saved.
         """
-        data = np.load(self.network_filename)
+        data = np.load(self.network_filename, encoding='latin1')
         self.hidden_weights = data['hidden_weights']
         self.hidden_bias = data['hidden_bias']
         self.output_weights = data['output_weights']
@@ -827,7 +827,7 @@ Output size: %d
         It will load weights, biases, sizes, padding,
         and feature tables.
         """
-        data = np.load(filename)
+        data = np.load(filename, encoding='latin1')
 
         # cython classes don't have the __dict__ attribute
         # so we can't do an elegant self.__dict__.update(data)

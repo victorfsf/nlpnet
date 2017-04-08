@@ -32,7 +32,7 @@ def load_tag_dict(filename):
     with open(filename, 'rb') as f:
         code = 0
         for tag in f:
-            tag = unicode(tag, 'utf-8').strip()
+            tag = str(tag, 'utf-8').strip()
             if tag:
                 tag_dict[tag] = code
                 code += 1
@@ -247,7 +247,7 @@ class TaggerReader(object):
         words = []
         with open(filename, 'rb') as f:
             for word in f:
-                word = unicode(word, 'utf-8').strip()
+                word = str(word, 'utf-8').strip()
                 if word:
                     words.append(word)
 

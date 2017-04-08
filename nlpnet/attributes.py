@@ -86,7 +86,7 @@ class Affix(object):
         try:
             with open(filename, 'rb') as f:
                 for line in f:
-                    affix = unicode(line.strip(), 'utf-8')
+                    affix = str(line.strip(), 'utf-8')
                     size = len(affix)
                     affixes_by_size[size].append(affix)
         except IOError:

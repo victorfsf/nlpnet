@@ -71,12 +71,12 @@ def evaluate_pos(gold_file=None, oov=None):
 def is_punctuation(token):
     '''
     Returns whether a given word is punctuation according to
-    unicode punctuation categories.
+    str punctuation categories.
     '''
-    # codes for unicode punctuation categories
-    unicode_punctuation = set(['Pc', 'Pd', 'Pe', 'Pf', 'Pi', 'Po', 'Ps'])
+    # codes for str punctuation categories
+    str_punctuation = set(['Pc', 'Pd', 'Pe', 'Pf', 'Pi', 'Po', 'Ps'])
     for char in token.word:
-        if ud.category(char) not in unicode_punctuation:
+        if ud.category(char) not in str_punctuation:
             return False
 
     return True
@@ -621,7 +621,7 @@ def read_oov_words(oov_file):
     words = set()
     with open(oov_file, 'rb') as f:
         for line in f:
-            uline = unicode(line, 'utf-8').strip().lower()
+            uline = str(line, 'utf-8').strip().lower()
             words.add(uline)
 
     return words

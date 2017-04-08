@@ -78,7 +78,7 @@ class SRLReader(reader.TaggerReader):
         lines = []
         with open(filename, 'rb') as f:
             for line in f:
-                line = unicode(line, 'utf-8').strip()
+                line = str(line, 'utf-8').strip()
                 lines.append(line)
 
         self.sentences = []
@@ -267,7 +267,7 @@ class SRLReader(reader.TaggerReader):
         code = 0
         with open(filename, 'rb') as f:
             for tag in f:
-                tag = unicode(tag, 'utf-8').strip()
+                tag = str(tag, 'utf-8').strip()
                 if tag == '':
                     continue
 
@@ -345,7 +345,7 @@ class SRLReader(reader.TaggerReader):
                 lambda t: attributes.get_capitalization(t.word))
 
         if self.md.use_pos:
-            with open(self.md.paths['pos_tag_dict']) as f:
+            with open(self.md.paths['pos_tag_dict'], 'rb') as f:
                 pos_dict = pickle.load(f)
 
             pos_def_dict = defaultdict(lambda: pos_dict['other'])
@@ -353,7 +353,7 @@ class SRLReader(reader.TaggerReader):
             self.converter.add_extractor(lambda t: pos_def_dict[t.pos])
 
         if self.md.use_chunk:
-            with open(self.md.paths['chunk_tag_dict']) as f:
+            with open(self.md.paths['chunk_tag_dict'], 'rb') as f:
                 chunk_dict = pickle.load(f)
 
             chunk_def_dict = defaultdict(lambda: chunk_dict['O'])

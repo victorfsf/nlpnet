@@ -37,7 +37,7 @@ def read_plain_vocabulary(filename):
     words = []
     with open(filename, 'rb') as f:
         for line in f:
-            word = unicode(line, 'utf-8').strip()
+            word = str(line, 'utf-8').strip()
             if not word:
                 continue
             words.append(word)
@@ -156,7 +156,7 @@ def read_skipdep_embeddings(filename):
     with open(filename, 'rb') as f:
         for line in f:
             fields = line.split()
-            word = unicode(fields[0], 'utf-8')
+            word = str(fields[0], 'utf-8')
             vector = np.fromiter((float(x) for x in fields[1:]),
                                  dtype=np.float)
             model[word] = vector

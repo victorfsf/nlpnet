@@ -37,8 +37,8 @@ def interactive_running(args):
         except EOFError:
             break
 
-        if type(text) is not unicode:
-            text = unicode(text, 'utf-8')
+        if type(text) is not str:
+            text = str(text, 'utf-8')
 
         if use_tokenizer:
             result = tagger.tag(text)

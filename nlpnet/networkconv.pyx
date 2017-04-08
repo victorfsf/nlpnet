@@ -241,7 +241,7 @@ Output size: %d
         It will load weights, biases, sizes, padding and
         distance tables, and other feature tables.
         """
-        data = np.load(filename)
+        data = np.load(filename, encoding='latin1')
         return cls._load_from_file(data, filename)
 
     def _load_parameters(self):
@@ -249,7 +249,7 @@ Output size: %d
         Loads weights, feature tables, distance tables and
         transition tables previously saved.
         """
-        data = np.load(self.network_filename)
+        data = np.load(self.network_filename, encoding='latin1')
         self.hidden_weights = data['hidden_weights']
         self.hidden_bias = data['hidden_bias']
         self.output_weights = data['output_weights']
@@ -616,7 +616,7 @@ Output size: %d
         else:
             sent_args = None
 
-        for sent, sent_preds, sent_tags in zip(self.validation_sentences, 
+        for sent, sent_preds, sent_tags in zip(self.validation_sentences,
                                                 self.validation_predicates,
                                                 self.validation_tags):
             if self.validation_arguments is not None:

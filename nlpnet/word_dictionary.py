@@ -109,7 +109,7 @@ class WordDictionary(dict):
         words = []
         with open(filename, 'rb') as f:
             for word in f:
-                word = unicode(word, 'utf-8').strip()
+                word = str(word, 'utf-8').strip()
                 if word:
                     words.append(word)
 

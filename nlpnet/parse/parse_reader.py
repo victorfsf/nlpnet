@@ -89,7 +89,7 @@ class DependencyReader(reader.TaggerReader):
 
         with open(filename, 'rb') as f:
             for line in f:
-                line = unicode(line, 'utf-8').strip()
+                line = str(line, 'utf-8').strip()
                 lines.append(line)
 
         for line in lines:

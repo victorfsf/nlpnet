@@ -54,8 +54,8 @@ def tokenize(text, language):
 
     :param language: two letter code (en, pt)
     '''
-    if not isinstance(text, unicode):
-        text = unicode(text, 'utf-8')
+    if not isinstance(text, str):
+        text = str(text, 'utf-8')
 
     if language == 'en':
         return tokenize_en(text)
@@ -444,7 +444,7 @@ def set_logger(level):
 
 def load_features_from_file(features_file):
     '''Reads a file with features written as binary data.'''
-    return np.load(features_file)
+    return np.load(features_file, encoding='latin1')
 
 
 def save_features_to_file(table, features_file):

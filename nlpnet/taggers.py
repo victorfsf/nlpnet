@@ -255,7 +255,7 @@ class SRLTagger(Tagger):
         '''
         Runs the SRL process on the given text.
 
-        :param text: unicode or str encoded in utf-8.
+        :param text: str or str encoded in utf-8.
         :param no_repeats: whether to prevent repeated argument labels
         :returns: a list of SRLAnnotatedSentence objects
         '''
@@ -432,14 +432,14 @@ class POSTagger(Tagger):
         '''
         Tags the given text.
 
-        :param text: a string or unicode object. Strings assumed to be utf-8
+        :param text: a string or str object. Strings assumed to be utf-8
         :returns: a list of lists (sentences with tokens).
             Each sentence has (token, tag) tuples.
         '''
         tokens = utils.tokenize(text, self.language)
         result = []
         for sent in tokens:
-            tagged = self.tag_tokens(sent, return_tokens=True)
+            tagged = list(self.tag_tokens(sent, return_tokens=True))
             result.append(tagged)
 
         return result
