@@ -1,17 +1,17 @@
 .. image:: https://badges.gitter.im/Join%20Chat.svg
    :alt: Join the chat at https://gitter.im/erickrf/nlpnet
    :target: https://gitter.im/erickrf/nlpnet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-   
-Gitter is chat room for developers.
+
+Gitter is a chat room for developers.
 
 ===============================================================
 ``nlpnet`` --- Natural Language Processing with neural networks
 ===============================================================
 
-``nlpnet`` is a Python library for Natural Language Processing tasks based on neural networks. 
-Currently, it performs part-of-speech tagging, semantic role labeling and dependency parsing. 
+``nlpnet`` is a Python library for Natural Language Processing tasks based on neural networks.
+Currently, it performs part-of-speech tagging, semantic role labeling and dependency parsing.
 Most of the architecture is language independent, but some functions were specially tailored for working
-with Portuguese. This system was inspired by SENNA_.
+with Portuguese. This system was inspired by SENNA_. **Works with Python 3**
 
 .. _SENNA: http://ronan.collobert.com/senna/
 
@@ -100,7 +100,7 @@ The ``to_conll()`` method of ParsedSentence objects prints them in the `CoNLL`_ 
     array([ 1,  2, -1,  2,  5,  3,  2])
     >>> sent.labels
     [u'NMOD', u'SBJ', u'ROOT', u'LOC-PRD', u'NMOD', u'PMOD', u'P']
-    
+
 The ``heads`` member variable is a numpy array. The i-th position in the array contains the index of the head of the i-th token, except for the root token, which has a head of -1. Notice that these indices are 0-based, while the ones shown in the ``to_conll()`` function are 1-based.
 
 .. _`CoNLL`: http://ilk.uvt.nl/conll/#dataformat
@@ -117,7 +117,7 @@ Standalone scripts
     O_ART rato_N roeu_V a_ART roupa_N do_PREP+ART rei_N de_PREP Roma_NPROP ._PU
 
 If ``--data`` is not given, the script will search for the trained models in the current directory. ``--lang`` defaults to ``en``. If you have text already tokenized, you may use the ``-t`` option; it assumes tokens are separated by whitespaces.
-    
+
 With semantic role labeling:
 
 .. code-block:: bash
@@ -158,5 +158,3 @@ The following references describe the design of nlpnet, as well as experiments c
 * Fonseca, Erick and Rosa, João Luís G. **A Two-Step Convolutional Neural Network Approach for Semantic Role Labeling**. Proceedings of the International Joint Conference on Neural Networks. 2013.
 
 * Fonseca, Erick, Rosa, João Luís G. and Aluísio, Sandra M. **Evaluating word embeddings and a revised corpus for part-of-speech tagging in Portuguese**. Journal of The Brazilian Computer Society. 2015.
-
-
