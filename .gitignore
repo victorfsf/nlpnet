@@ -1,5 +1,4 @@
 *.pyc
-.*
 data
 docs/Makefile
 docs/make.bat
@@ -8,3 +7,5 @@ nlpnet/network.pyd
 build
 dist
 MANIFEST
+*.egg-info/
+*.cpython*
