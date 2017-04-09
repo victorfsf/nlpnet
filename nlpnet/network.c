@@ -444,7 +444,7 @@ static CYTHON_INLINE float __PYX_NAN() {
 #endif
 
 typedef struct {PyObject **p; const char *s; const Py_ssize_t n; const char* encoding;
-                const char is_str; const char is_str; const char intern; } __Pyx_StringTabEntry;
+                const char is_unicode; const char is_str; const char intern; } __Pyx_StringTabEntry;
 
 #define __PYX_DEFAULT_STRING_ENCODING_IS_ASCII 0
 #define __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT 0
@@ -622,7 +622,7 @@ static PyObject *__pyx_d;
 static PyObject *__pyx_b;
 static PyObject *__pyx_empty_tuple;
 static PyObject *__pyx_empty_bytes;
-static PyObject *__pyx_empty_str;
+static PyObject *__pyx_empty_unicode;
 static int __pyx_lineno;
 static int __pyx_clineno = 0;
 static const char * __pyx_cfilenm= __FILE__;
@@ -2296,7 +2296,7 @@ static PyTypeObject *__pyx_ptype_7cpython_7complex_complex = 0;
 
 /* Module declarations from 'cpython.string' */
 
-/* Module declarations from 'cpython.str' */
+/* Module declarations from 'cpython.unicode' */
 
 /* Module declarations from 'cpython.dict' */
 
@@ -53773,7 +53773,7 @@ PyMODINIT_FUNC PyInit_network(void)
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_empty_tuple)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_empty_bytes = PyBytes_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_bytes)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_empty_str = PyUnicode_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_str)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_empty_unicode = PyUnicode_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_unicode)) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pyx_CyFunction_USED
   if (__pyx_CyFunction_init() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
@@ -59015,7 +59015,7 @@ bad:
                         static int __Pyx_InitStrings(__Pyx_StringTabEntry *t) {
     while (t->p) {
         #if PY_MAJOR_VERSION < 3
-        if (t->is_str) {
+        if (t->is_unicode) {
             *t->p = PyUnicode_DecodeUTF8(t->s, t->n - 1, NULL);
         } else if (t->intern) {
             *t->p = PyString_InternFromString(t->s);
@@ -59023,7 +59023,7 @@ bad:
             *t->p = PyString_FromStringAndSize(t->s, t->n - 1);
         }
         #else
-        if (t->is_str | t->is_str) {
+        if (t->is_unicode | t->is_str) {
             if (t->intern) {
                 *t->p = PyUnicode_InternFromString(t->s);
             } else if (t->encoding) {
